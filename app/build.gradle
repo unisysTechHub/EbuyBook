@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id  'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.unisytech.ebuybook"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.unisytech.ebuybook.CustomTestRunner"
+        multiDexEnabled = true
+
+    }
+
+
+    buildTypes {
+
+        debug {
+            testCoverageEnabled true
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/AL2.0'
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    androidTestImplementation project(path: ':app')
+    kapt deps.room.compiler
+    kapt deps.glide.compiler
+
+    implementation deps.constraint_layout
+    implementation deps.app_compat
+    implementation deps.fragment.runtime_ktx
+    implementation deps.recyclerview
+    implementation deps.cardview
+    implementation deps.material
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime
+    implementation deps.paging_runtime
+    implementation deps.kotlin.stdlib
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.glide.runtime
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
+    kaptTest deps.dagger.compiler
+    kaptAndroidTest deps.dagger.compiler
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation deps.atsl.core
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.arch_core.testing
+
+    androidTestImplementation deps.junit
+    androidTestImplementation deps.retrofit.mock
+    androidTestImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+    implementation deps.coroutines.android
+    implementation deps.coroutines.test
+
+    testImplementation deps.junit
+    testImplementation deps.retrofit.mock
+    testImplementation deps.arch_core.testing
+    testImplementation deps.mockito.core
+    androidTestImplementation deps.test.core
+    androidTestImplementation deps.test.runner
+    testImplementation deps.test.rules
+    testImplementation deps.test.truth
+    androidTestImplementation deps.test.truth
+    androidTestImplementation deps.test.ext
+    androidTestImplementation deps.test.extktx
+
+    androidTestImplementation deps.espresso.core
+    testImplementation deps.espresso.contrib
+    implementation deps.espresso.intents
+    implementation deps.espresso.accessibility
+    implementation deps.espresso.web
+    implementation deps.espresso.concurrent
+    implementation deps.espresso.idling
+    androidTestImplementation  deps.espresso.uiautomator
+}

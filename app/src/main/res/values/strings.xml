@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EBuybook</string>
+    <string name="baseURl">"https://w41v53pmwj.execute-api.us-east-1.amazonaws.com/default/"</string>
+</resources>
