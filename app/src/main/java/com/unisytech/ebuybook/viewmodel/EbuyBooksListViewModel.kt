@@ -35,7 +35,7 @@ class EbuyBooksListViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<EBuyBooksListUiState> = MutableStateFlow(
         EBuyBooksListUiState.Success(null)
     )
-    val uiState: MutableStateFlow<EBuyBooksListUiState> = _uiState
+    val uiState: StateFlow<EBuyBooksListUiState> = _uiState
     companion object {
         const val SEARCH_STRING = "BookName"
         const val DEFAULT_STRING = ""

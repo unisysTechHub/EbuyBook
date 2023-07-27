@@ -11,6 +11,7 @@ import com.unisytech.ebuybook.viewmodel.EBuyBooksListUiState
 import com.unisytech.ebuybook.viewmodel.EBuyViewModelFactory
 import com.unisytech.ebuybook.viewmodel.EbuyBooksListViewModel
 import com.unisytech.ebuybook.viewmodel.EbuySavedStateViewModelFactory
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -32,12 +33,10 @@ class MainActivity : AppCompatActivity() {
    // val viewModel: EbuyBooksListViewModel by viewModels{ eBuyViewModelFactory }
     val viewModel: EbuyBooksListViewModel by viewModels{ EbuySavedStateViewModelFactory(this) }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     fun initAdapter() {
         MainScope().launch {
-            viewModel.uiState.collect {
-                viewModel.uiState.collect(this@MainActivity::updateUI)
-            }
-
+            viewModel.uiState.collect(this@MainActivity::updateUI)
         }
     }
    private suspend fun updateUI(state : EBuyBooksListUiState) {

@@ -1,6 +1,5 @@
 package com.unisytech.ebuybook.ditest
 
-import androidx.lifecycle.SavedStateHandle
 import com.unisytech.ebuybook.ExampleInstrumentedTest
 import com.unisytech.ebuybook.MainActivity
 import com.unisytech.ebuybook.di.DaggerEBuyBookComponent
